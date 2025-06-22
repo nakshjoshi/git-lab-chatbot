@@ -125,8 +125,9 @@ if user_query:
         st.markdown(user_query)
 
     try:
-        result = qa_chain({"question": user_query})
-        response = result["answer"]
+        with st.spinner("🤖 Thinking... generating response..."):
+            result = qa_chain({"question": user_query})
+            response = result["answer"]
 
         with st.chat_message("assistant", avatar="🤖"):
             st.markdown(response)
